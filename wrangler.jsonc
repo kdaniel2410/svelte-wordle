@@ -9,5 +9,11 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{
+			"pattern": "wordle.danielkirby.co.uk",
+			"custom_domain": true
+		}
+	]
 }
