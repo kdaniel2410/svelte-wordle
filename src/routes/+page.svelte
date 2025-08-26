@@ -114,9 +114,13 @@
 	{/each}
 </div>
 
+<!-- Keyboard -->
 <div class="flex flex-col items-center gap-1.5">
-	{#each data.keyboard as row}
-		<div class="flex gap-1.5">
+	{#each data.keyboard as row, r}
+		<div class="flex w-full max-w-96 justify-center gap-1.5">
+			{#if r === 1}
+				<div class="flex-[0.5]"></div>
+			{/if}
 			{#each row as key}
 				<button
 					onclick={() => {
@@ -130,11 +134,14 @@
 							currentInput += key;
 						}
 					}}
-					class={`min-w-10 rounded  p-4 text-center text-lg font-bold text-white  ${keyboardLetterState[key] === 'correct' ? 'bg-green-500' : keyboardLetterState[key] === 'present' ? 'bg-amber-300' : keyboardLetterState[key] === 'absent' ? 'bg-zinc-800' : 'bg-zinc-500 hover:bg-zinc-600'}`}
+					class={`min-h-12 rounded text-center font-bold text-white ${key === 'ENTER' ? 'flex-[1.5]' : 'flex-1'}  ${keyboardLetterState[key] === 'correct' ? 'bg-green-500' : keyboardLetterState[key] === 'present' ? 'bg-amber-300' : keyboardLetterState[key] === 'absent' ? 'bg-zinc-800' : 'bg-zinc-500 hover:bg-zinc-600'} ${key === 'ENTER' ? 'text-xs' : 'text-lg'}`}
 				>
 					{key}
 				</button>
 			{/each}
+			{#if r === 1}
+				<div class="flex-[0.5]"></div>
+			{/if}
 		</div>
 	{/each}
 	{#if gameState !== 'playing'}
